@@ -1,0 +1,81 @@
+\chapter{Graph}
+
+\section{Fundamentals}
+
+\subsection{Como representar}
+
+Em C++, podemos representar uma lista de adjacencias como um vector de vectors, ou um array de vectors:
+\begin{lstlisting}
+int n, m; cin >> n >> m; // n=vertices, m=arestas
+vector<vector<int>> edges(n); // edges[i] = {adjacentes a i}
+
+for (int i = 0; i < m; i++) {
+   int u, v; cin >> u >> v;
+   edges[u].push_back(v); // u->v
+   edges[v].push_back(u); // v->u (para grafos nao direcionados)
+}
+
+// tb poderia fazer um dos arrays estaticos:
+const int MAXN = 1e5 + 5; // falando que o maximo de N eh 10^5
+vector<int> edges[MAXN];
+\end{lstlisting}
+
+	\kactlimport{DFS.h}
+	\kactlimport{BFS.h}
+	\kactlimport{Dijkstra.h}
+	\kactlimport{FloydWarshall.h}
+	\kactlimport{TopoSort.h}
+
+\section{Network flow}
+	% \kactlimport{PushRelabel.h}
+	\kactlimport{MinCostMaxFlow.h}
+	% \kactlimport{EdmondsKarp.h}
+	\kactlimport{Dinic.h}
+	\kactlimport{MinCut.h}
+	% \kactlimport{GlobalMinCut.h}
+	% \kactlimport{GomoryHu.h}
+
+% \section{Matching}
+% 	\kactlimport{hopcroftKarp.h}
+% 	\kactlimport{DFSMatching.h}
+% 	\kactlimport{MinimumVertexCover.h}
+% 	\kactlimport{WeightedMatching.h}
+% 	\kactlimport{GeneralMatching.h}
+
+\section{DFS algorithms}
+	\kactlimport{SCC.h}
+	% \kactlimport{BiconnectedComponents.h}
+	\kactlimport{2sat.h}
+	\kactlimport{EulerWalk.h}
+
+% \section{Coloring}
+% 	\kactlimport{EdgeColoring.h}
+
+% \section{Heuristics}
+% 	\kactlimport{MaximalCliques.h}
+% 	\kactlimport{MaximumClique.h}
+% 	\kactlimport{MaximumIndependentSet.h}
+
+% \section{Trees}
+	\kactlimport{BinaryLifting.h}
+	% \kactlimport{LCA.h}
+	% \kactlimport{CompressTree.h}
+	% \kactlimport{HLD.h}
+	% \kactlimport{LinkCutTree.h}
+	% \kactlimport{DirectedMST.h}
+
+% \section{Math}
+% 	\subsection{Number of Spanning Trees}
+% 		% I.e. matrix-tree theorem.
+% 		% Source: https://en.wikipedia.org/wiki/Kirchhoff%27s_theorem
+% 		% Test: stress-tests/graph/matrix-tree.cpp
+% 		Create an $N\times N$ matrix \texttt{mat}, and for each edge $a \rightarrow b \in G$, do
+% 		\texttt{mat[a][b]--, mat[b][b]++} (and \texttt{mat[b][a]--, mat[a][a]++} if $G$ is undirected).
+% 		Remove the $i$th row and column and take the determinant; this yields the number of directed spanning trees rooted at $i$
+% 		(if $G$ is undirected, remove any row/column).
+
+% 	\subsection{Erdős–Gallai theorem}
+% 		% Source: https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Gallai_theorem
+% 		% Test: stress-tests/graph/erdos-gallai.cpp
+% 		A simple graph with node degrees $d_1 \ge \dots \ge d_n$ exists iff $d_1 + \dots + d_n$ is even and for every $k = 1\dots n$,
+% 		\[ \sum _{i=1}^{k}d_{i}\leq k(k-1)+\sum _{i=k+1}^{n}\min(d_{i},k). \]

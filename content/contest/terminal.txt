@@ -1,0 +1,10 @@
+# compilar com flags de warning e sanitizers
+g++ -Wall -std=c++17 -fsanitize=address,undefined -ggdb3 \
+	sol.cpp -o sol;
+
+# testar o input no arquivo 1.in
+./sol < 1.in
+
+# comparar a sua saida com a do arquivo 1.out
+./sol < 1.in > my_out
+diff -w 1.out my_out

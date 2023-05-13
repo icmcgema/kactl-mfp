@@ -1,0 +1,253 @@
+% Written by Andre Fakhoury, 2021
+
+\chapter{STL}
+
+Possui algoritmos e containers que podem ser utilizados.
+
+\section{Estruturas de dados}
+
+\subsection{vector$<$T$>$}
+
+Um vetor dinâmico, pode ter seu tamanho alterado durante a execucao e tudo mais
+
+\begin{lstlisting}
+vector<int> v; // criar um vetor q armazena int
+v.push_back(1); // insere no final. O(1)
+v.pop_back(); // remove o cara do final. O(1)
+v.insert(v.begin(), 1); // insere no comeco. O(n) - CUIDADO COM TLE!!
+v.size(); // retorna a qtd de elementos no vetor
+
+vector<long long> x(5, 1); // cria um vetor de 5 elementos valendo 1 cada
+for (int i = 0; i < (int) x.size(); i++) cout << x[i]; // imprime 11111
+for (int i : x) cout << i; // imprime 11111. Esse for e tipo um "for each"
+\end{lstlisting}
+
+\subsection{string}
+
+Um vector de caracteres. Bem melhor do que manipular string em C
+
+\begin{lstlisting}
+string x = "aba";
+string y = "xxx";
+string s = x + y; // concatena, s = abaxxx
+cin >> s; // le do input
+cout << s; // imprime na tela
+x[1] = 'c'; // x = "aca" agora
+\end{lstlisting}
+
+\subsection{pair$<$T1, T2$>$}
+
+Um par de elementos quaisquer. Ja possui o comparador de "$<$" implementado, facilitando a comparacao (considera o primeiro e desempata pelo segundo)
+
+\begin{lstlisting}
+pair<int, double> p = {1, 3.5};
+cout << p.first << " " << p.second; // 1 3.5
+p.first = 10;
+cout << p.first << " " << p.second; // 10 3.5
+
+// pode ter pair de qqr coisa basicamente
+pair<vector<int>, string> p2;
+pair<pair<pair<int, int>, int>, int> p3; // tem q pegar p3.first.first.first
+\end{lstlisting}
+    
+\subsection{stack$<$T$>$}
+
+Uma estrutura  de dados de pilha (FILO).
+
+\begin{lstlisting}
+stack<int> st;
+st.push(1);
+st.push(2);
+int old = st.top(); // old = 2
+st.pop(); // tira da pilha
+int cur = st.top(); // cur = 1
+\end{lstlisting}
+
+\subsection{queue$<$T$>$}
+
+Uma estrutura  de dados de fila (FIFO).
+
+\begin{lstlisting}
+queue<int> qu;
+qu.push(1);
+qu.push(2);
+int old = qu.front(); // old = 1
+qu.pop(); // tira da pilha
+int cur = qu.front(); // cur = 2
+\end{lstlisting}
+
+\subsection{deque$<$T$>$}
+
+Double ended queue: uma fila dupla. Pode inserir e tirar do comeco ou do final.
+
+\begin{lstlisting}
+deque<int> dq;
+dq.push_back(3); // dq = {3}
+dq.push_front(1); // dq = {1, 3}
+dq.push_back(2); // dq = {1, 3, 2}
+dq.back(); // retorna 2
+dq.front(); // retorna 1
+dp.pop_back(); // dq = {1, 3}
+\end{lstlisting}
+
+\subsection{priority\_queue$<$T$>$}
+
+Uma *max heap*. Faz operacoes de insercao e retornar o topo em O(logn).
+
+\begin{lstlisting}
+priority_queue<int> pq;
+pq.push(50); // pq = {50}
+pq.push(10); // pq = {10, 50}
+pq.top(); // retorna 50
+pq.pop(); // pq = {10}
+\end{lstlisting}
+
+\subsection{set$<$T$>$}
+
+Um conjunto matematico ordenado. Nao armazena valores repetidos. Utiliza uma arvore balanceada. Operacoes em O(logn).
+
+\begin{lstlisting}
+set<int> st;
+st.insert(10); // st = {10}
+st.insert(1); // st = {1, 10}
+st.insert(10); // st = {1, 10}
+st.erase(10); // st = {1}
+cout << *st.begin() << "\n"; // imprime 1
+
+for (int x : st) cout << x << " "; // imprime todos os caras do set
+\end{lstlisting}
+
+\subsection{multiset$<$T$>$}
+
+Um conjunto matematico ordenado. **Armazena** valores repetidos. Utiliza uma arvore balanceada. Operacoes em O(logn).
+
+\begin{lstlisting}
+multiset<int> ms;
+ms.insert(10); // ms = {10}
+ms.insert(10); // ms = {10, 10}
+ms.insert(1); // ms = {1, 10, 10}
+ms.insert(1); // ms = {1, 1, 10, 10}
+ms.erase(10); // remove TODOS os 10. ms = {1, 1}
+ms.erase(ms.begin()); // remove so o cara do iterador que mandar. ms = {1}
+cout << *ms.begin() << "\n"; // imprime 1
+
+for (int x : ms) cout << x << " "; // imprime todos os caras do multiset
+\end{lstlisting}
+
+\subsection{map$<$K, V$>$}
+
+Um dicionario "chave, valor". Pra cada chave, tem um valor associado. Caso vc acesse uma chave nao inicializada, e criado uma instância com valor {} (construtor vazio padrao).
+
+\begin{lstlisting}
+map<string, int> mp;
+mp["aba"] = 10;
+mp["axxx"] = 11;
+cout << mp["aba"]; // imprime 10
+cout << mp["aaaaaaa"]; // imprime 0, inteiro padrao
+mp.erase("aba"); // remove a chave "aba" e o valor q tava nela
+
+for (auto p : mp) { // percorre todos os pair<key, value> do map
+	cout << p.first << ": " p.second << " ";
+} // nesse caso, imprimira "axxx: 11 aaaaaaa: 0 "
+\end{lstlisting}
+
+\ 
+
+
+\subsection{unordered}
+
+As estruturas \texttt{unordered\_set$<$T$>$} e \texttt{unordered\_map$<$K, V$>$} sao como os set e map, mas utilizam Hash para fazer as operacoes em O(1). Nao garantem ordem, e podem ser inclusive mais lentos que o set e map (podem ser criados casos de teste que "quebram" o hash, fazendo com que tenha muito conflito).
+
+\section{Iteradores}
+    
+Um iterador e "como um ponteiro". Sao meio complicados de entender de primeira, mas sao muito utilizados pelos algoritmos da STL. Exemplos:
+
+\begin{lstlisting}
+vector<int> v = {1, 2, 3};
+vector<int>::iterator it; // tipo do iterador
+// se fizer *it, pega o valor do cara daquele endereco
+
+// exemplo
+vector<int>::iterador ini = v.begin().
+// E um iterador que aponta pro primeiro cara. No caso, *ini = 1
+
+auto ini = v.begin(); // tambem podemos utilizar a tipagem automatica "auto"
+// pra nao precisar ficar escrevendo muita coisa
+
+v.end(); // -> um elemento depois do ultimo cara. *v.end() daria erro
+v.rbegin(); // iterador reverso (comeca do final pro comeco).
+// no caso, v.rbegin() e o ultimo cara (*v.rbegin() = 3)
+v.rend(); // iter. reverso, um cara antes do primeiro cara (*v.rend() da erro)
+\end{lstlisting}
+
+\section{Algoritmos}
+
+\subsection{sort(begin, end, $<$comparador$>$)}
+
+\ 
+
+\begin{lstlisting}
+vector<int> v = {4, 2, 1};
+sort(v.begin(), v.end(); // ordena em forma crescente
+sort(v.begin(), v.end(), [](int a, int b) {
+	return a > b;
+}); // utiliza uma funcao lambda para ordenar de forma decrescente
+
+// vc tambem pode fazer com uma funcao sem ser lambda
+bool cmp(int a, int b) { return a > b; }
+...
+sort(v.begin(), v.end(), cmp); 
+\end{lstlisting}
+
+\ 
+
+\subsection{lower\_bound(begin, end, valor)}
+
+\begin{itemize}[noitemsep]
+\item \textbf{lower\_bound:} retorna um iterador para o primeiro elemento \textit{maior ou igual} ao valor enviado.
+\item \textbf{upper\_bound:} retorna um iterador para o primeiro elemento \textit{maior} que o valor enviado.
+\end{itemize}
+
+\begin{lstlisting}
+vector<int> v = {1, 2, 3, 3, 6}; // o vetor deve estar ordenado
+
+auto it1 = lower_bound(v.begin(), v.end(), 1); // it pro indice 0
+auto it2 = upper_bound(v.begin(), v.end(), 1); // it pro indice 1
+auto it3 = lower_bound(v.begin(), v.end(), 3); // it pro indice 2
+auto it4 = upper_bound(v.begin(), v.end(), 3); // it pro indice 4
+auto it5 = lower_bound(v.begin(), v.end(), 6); // it pro indice 4
+auto it6 = upper_bound(v.begin(), v.end(), 6); // it do v.end()
+auto it7 = lower_bound(v.begin(), v.end(), 7); // it do v.end()
+auto it8 = lower_bound(v.begin(), v.end(), -1); // it pro indice 0
+\end{lstlisting}
+
+\ 
+    
+\subsection{next\_permutation(begin, end)}
+
+Gera permutacoes, muito util para problemas em que precisa testar algo para todas as permutacoes em $O(n!)$
+
+\begin{lstlisting}
+vector<int> v = {3, 4, 1};
+sort(v.begin(), v.end()); // ordena para ficar na "permutacao inicial"
+do {
+	for (int i : v) cout << i << " ";
+	cout << "\n";
+} while(next_permutation(v.begin(), v.end())); // imprime todas as 6 permutacoes do vetor v
+\end{lstlisting}
+
+\subsection{min(val1, val2), max(val1, val2)}
+
+Retorna o valor minimo para os valores val1 e val2. Eles devem ser do mesmo tipo, e este tipo deve ter o operador "<" definido.
+
+\begin{lstlisting}
+int a = 4, b = 10;
+long long x = 1321, y = 923;
+
+min(a, b); // 4
+max(a, b); // 10
+min(x, y); // 932
+min(a, x); // ERRO, nao sao do mesmo tipo
+min( (long long) a, x); // 4, cast antes para long long
+min(1LL * a, x); // 4, multiplicacao de long long com INT gera long long
+\end{lstlisting}
