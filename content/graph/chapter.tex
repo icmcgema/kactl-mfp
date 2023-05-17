@@ -12,7 +12,7 @@ vector<vector<int>> edges(n); // edges[i] = {adjacentes a i}
 for (int i = 0; i < m; i++) {
    int u, v; cin >> u >> v;
    edges[u].push_back(v); // u->v
-   edges[v].push_back(u); // v->u (para grafos nao direcionados)
+   edges[v].push_back(u); // v->u(para grafos nao direcionados)
 }
 
 // tb poderia fazer um dos arrays estaticos:
@@ -26,12 +26,12 @@ vector<int> edges[MAXN];
 	\kactlimport{FloydWarshall.h}
 	\kactlimport{TopoSort.h}
 
-\section{Network flow}
+% \section{Network flow}
 	% \kactlimport{PushRelabel.h}
-	\kactlimport{MinCostMaxFlow.h}
+	% \kactlimport{MinCostMaxFlow.h}
 	% \kactlimport{EdmondsKarp.h}
-	\kactlimport{Dinic.h}
-	\kactlimport{MinCut.h}
+	% \kactlimport{Dinic.h}
+	% \kactlimport{MinCut.h}
 	% \kactlimport{GlobalMinCut.h}
 	% \kactlimport{GomoryHu.h}
 
@@ -42,11 +42,11 @@ vector<int> edges[MAXN];
 % 	\kactlimport{WeightedMatching.h}
 % 	\kactlimport{GeneralMatching.h}
 
-\section{DFS algorithms}
-	\kactlimport{SCC.h}
+% \section{DFS algorithms}
+	% \kactlimport{SCC.h}
 	% \kactlimport{BiconnectedComponents.h}
-	\kactlimport{2sat.h}
-	\kactlimport{EulerWalk.h}
+	% \kactlimport{2sat.h}
+	% \kactlimport{EulerWalk.h}
 
 % \section{Coloring}
 % 	\kactlimport{EdgeColoring.h}
@@ -57,7 +57,7 @@ vector<int> edges[MAXN];
 % 	\kactlimport{MaximumIndependentSet.h}
 
 % \section{Trees}
-	\kactlimport{BinaryLifting.h}
+	% \kactlimport{BinaryLifting.h}
 	% \kactlimport{LCA.h}
 	% \kactlimport{CompressTree.h}
 	% \kactlimport{HLD.h}

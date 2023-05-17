@@ -1,9 +1,8 @@
 \chapter{Combinatorial}
 
-\section{Permutations}
-	\subsection{Factorial}
-		\import{factorial.tex}
-		\kactlimport{IntPerm.h}
+\section{Fatorial}
+\import{factorial.tex}
+		% \kactlimport{IntPerm.h}
 
 	% \subsection{Cycles}
 	% 	Let $g_S(n)$ be the number of $n$-permutations whose cycle lengths all belong to the set $S$. Then
@@ -87,15 +86,14 @@
 % 		\# on $k$ existing trees of size $n_i$: $n_1n_2\cdots n_k n^{k-2}$ \\
 % 		\# with degrees $d_i$: $(n-2)! / ((d_1-1)! \cdots (d_n-1)!)$
 
-	\subsection{Catalan numbers}
-		\[ C_n=\frac{1}{n+1}\binom{2n}{n}= \binom{2n}{n}-\binom{2n}{n+1} = \frac{(2n)!}{(n+1)!n!} \]
-		\[ C_0=1,\ C_{n+1} = \frac{2(2n+1)}{n+2}C_n,\ C_{n+1}=\sum C_iC_{n-i} \]
-		${C_n = 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, \dots}$
-		\begin{itemize}[noitemsep]
-			\item sub-diagonal monotone paths in an $n\times n$ grid.
-			\item strings with $n$ pairs of parenthesis, correctly nested.
-			\item binary trees with with $n+1$ leaves (0 or 2 children).
-			\item ordered trees with $n+1$ vertices.
-			\item ways a convex polygon with $n+2$ sides can be cut into triangles by connecting vertices with straight lines.
-			\item permutations of $[n]$ with no 3-term increasing subseq.
-		\end{itemize}
+\section{Números de Catalan}
+	\[ C_n=\frac{1}{n+1}\binom{2n}{n}= \binom{2n}{n}-\binom{2n}{n+1} = \frac{(2n)!}{(n+1)!n!} \]
+	\[ C_0=1,\ C_{n+1} = \frac{2(2n+1)}{n+2}C_n,\ C_{n+1}=\sum C_iC_{n-i} \]
+	${C_n = 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, \dots}$
+	\begin{itemize}[noitemsep]
+		\item caminhos monotonicos sub-diagonais em um grid $n\times n$.
+		\item strings com $n$ pares de parenteses corretamente aninhados.
+		\item arvores binarias com $n+1$ folhas (0 ou 2 filhos).
+		\item arvores ordenadas com $n+1$ vertices.
+		\item quantas vezes um poligono convexo com $n+2$ lados pode ser cortado em triangulos ao conectar vertices com linhas retas.
+	\end{itemize}

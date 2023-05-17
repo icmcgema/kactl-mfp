@@ -151,9 +151,6 @@ for (auto p : mp) { // percorre todos os pair<key, value> do map
 } // nesse caso, imprimira "axxx: 11 aaaaaaa: 0 "
 \end{lstlisting}
 
-\ 
-
-
 \subsection{unordered}
 
 As estruturas \texttt{unordered\_set$<$T$>$} e \texttt{unordered\_map$<$K, V$>$} sao como os set e map, mas utilizam Hash para fazer as operacoes em O(1). Nao garantem ordem, e podem ser inclusive mais lentos que o set e map (podem ser criados casos de teste que "quebram" o hash, fazendo com que tenha muito conflito).
@@ -199,8 +196,6 @@ bool cmp(int a, int b) { return a > b; }
 sort(v.begin(), v.end(), cmp); 
 \end{lstlisting}
 
-\ 
-
 \subsection{lower\_bound(begin, end, valor)}
 
 \begin{itemize}[noitemsep]
@@ -220,8 +215,6 @@ auto it6 = upper_bound(v.begin(), v.end(), 6); // it do v.end()
 auto it7 = lower_bound(v.begin(), v.end(), 7); // it do v.end()
 auto it8 = lower_bound(v.begin(), v.end(), -1); // it pro indice 0
 \end{lstlisting}
-
-\ 
     
 \subsection{next\_permutation(begin, end)}
 
@@ -238,7 +231,7 @@ do {
 
 \subsection{min(val1, val2), max(val1, val2)}
 
-Retorna o valor minimo para os valores val1 e val2. Eles devem ser do mesmo tipo, e este tipo deve ter o operador "<" definido.
+Retorna o valor minimo para os valores val1 e val2. Eles devem ser do mesmo tipo, e este tipo deve ter o operador $<$ definido.
 
 \begin{lstlisting}
 int a = 4, b = 10;

@@ -1,6 +1,8 @@
 # compilar com flags de warning e sanitizers
-g++ -Wall -std=c++17 -fsanitize=address,undefined -ggdb3 \
-	sol.cpp -o sol;
+g++ sol.cpp -o sol -Wall -std=c++17 -fsanitize=address,undefined -g	
+
+# compilar com flag de otimizacao -O2
+g++ sol.cpp -o sol -Wall -std=c++17 -O2
 
 # testar o input no arquivo 1.in
 ./sol < 1.in
